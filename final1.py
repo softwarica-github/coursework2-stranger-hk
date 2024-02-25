@@ -60,8 +60,8 @@ class SimpleAntiVirus:
             hasher.update(buf)
         return hasher.hexdigest()
 
-    # def remove(self, file_path):
-    #     os.remove(file_path)
+    def remove(self, file_path):
+        os.remove(file_path)
 
     def scan_file_for_virus(self, file_path):
         file_hash = self.calculate_file_hash(file_path)
@@ -86,7 +86,7 @@ class SimpleAntiVirus:
                     # Ask if the user wants to remove the virus
                     user_response = messagebox.askyesno("Remove Virus", f"Do you want to remove the virus in {file_path}?")
                     if user_response:
-                        # self.remove(file_path)
+                        self.remove(file_path)
                         self.process_text_widget.insert(tk.END, f"Virus removed: {file_path}\n")
                     else:
                         self.process_text_widget.insert(tk.END, f"Virus not removed: {file_path}\n")
